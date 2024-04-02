@@ -1,0 +1,40 @@
+---
+title: "Analyzing the Effects of Climatic Change on Rice Production Yields in Asia Major Agricultural Regions"
+author: 
+  - Yang Cheng 
+  
+thanks: "Code and data are available at: https://github.com/E1cheng/Climate_Change_Agricultural"
+date: today
+date-format: long
+abstract: "In this study, we investigate the repercussions of climatic alterations on rice production yields across Asia's principal agricultural regions over the decade spanning 2011 to 2020. The modeling results indicate the intricate relationship between climatic variables and rice yield fluctuations. The findings underscore significant regional disparities in rice production outcomes, attributable to the differential impacts of climate change. This research contributes to the broader understanding of the challenges and opportunities facing rice production in the context of climatic variability, offering crucial insights for the development of adaptive strategies to ensure food security in the face of environmental change."
+format: pdf
+toc: true
+number-sections: true
+bibliography: references.bib
+---
+
+```{r}
+#| include: false
+#| warning: false
+#| message: false
+
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(arrow)
+library(here)
+library(kableExtra)
+library(knitr)
+```
+
+# Introduction {#sec-intro}
+The advent of climate change, recognized as one of the pivotal environmental challenges of the 21st century, has incited extensive investigation into its pervasive effects on ecosystems, human health, and, critically, global agricultural productivity. Despite the breadth of research, the nuanced impacts of this phenomenon on rice production yields within Asia's major agricultural regions remain insufficiently explored. Rice, being a staple food for a significant portion of the global population, particularly in Asia, stands at the forefront of this inquiry. 
+
+This study replicates and extends the groundbreaking research the 2022 article ‘A global dataset for the projected impacts of climate change on four major crops’ [@citeHasegawa2022], which meticulously constructed a comprehensive global dataset by amalgamating scientific databases, journal articles, and institutional website data. Their work, spanning from 1990 to 2020, laid the foundational groundwork for assessing the projected impacts of climate change on the yields of four major crops across various geographic regions, intertwined with local climatic conditions. By consolidating a vast array of previously isolated data points into a unified dataset, their study provides an invaluable resource for understanding the complex dynamics between crop yields and climate change. 
+
+In this exploration, our focus is on building upon this dataset to ascertain the direct causal impact of climatic changes on rice yields in Asia within the 2011-2020 timeframe. This is quantified through the variation in production outcomes directly attributable to climatic aberrations. Our analysis uncovers a notable variance in rice production outcomes directly correlatable to the interplay of climatic changes, including alterations in precipitation patterns, temperature variations, and CO2 concentration levels. Through this lens, we aim to provide a granular understanding of how environmental shifts precipitate significant outcomes in agricultural domains, thereby offering insights crucial for developing resilient food systems in the face of ongoing climatic uncertainties.
+
+\newpage
+
+
+# References
