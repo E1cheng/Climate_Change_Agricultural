@@ -10,6 +10,7 @@ library(dplyr)
 library(tidyverse)
 library(arrow)
 library(janitor)
+library(readxl)
 
 
 #### CLEAN DATA ####
@@ -32,5 +33,34 @@ agriculture_clean <- agriculture|>
   clean_names()|>
   na.omit()
 
+agriculture_clean
+
 write_parquet(agriculture_clean,
               "data/analysis_data/agriculture.parquet")
+
+agriculture_raw <- read_parquet(here::here("data/analysis_data/agriculture.parquet"))
+
+names(agriculture_raw)
+
+
+testres <- agriculture_raw
+
+countries <- unique(agriculture_raw$country)
+
+testres <- testres|>
+  group_by(country) |>
+  mutate(
+    "climate_impact_mean" = mean(climate_impacts_per_decade_percent),
+    "climate_impact_median" = median(climate_impacts_per_decade_percent),
+    "climate_impact_sd" = sd(climate_impacts_per_decade_percent)
+  ) |>
+  ungroup()
+  
+production <- testres |>
+  select(country, climate_impact_mean, climate_impact_median, climate_impact_sd) |>
+  unique()
+
+write_parquet(production,
+              "data/analysis_data/production.parquet")
+
+  
