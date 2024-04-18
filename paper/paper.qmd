@@ -34,6 +34,57 @@ This study replicates and extends the groundbreaking research the 2022 article �
 
 In this exploration, our focus is on building upon this dataset to ascertain the direct causal impact of climatic changes on rice yields in Asia within the 2011-2020 timeframe. This is quantified through the variation in production outcomes directly attributable to climatic aberrations. Our analysis uncovers a notable variance in rice production outcomes directly correlatable to the interplay of climatic changes, including alterations in precipitation patterns, temperature variations, and CO2 concentration levels. Through this lens, we aim to provide a granular understanding of how environmental shifts precipitate significant outcomes in agricultural domains, thereby offering insights crucial for developing resilient food systems in the face of ongoing climatic uncertainties.
 
+# Data {#sec-data}
+
+
+
+## Source and Methodology
+The dataset used in this study originates from the paper by [@citeHasegawa2022], titled "A global dataset for the projected impacts of climate change on four major crops". This comprehensive dataset is pivotal for understanding the projected impacts of climate change on crop yields. 
+
+The data encompasses projections of yield changes due to climate change for maize, rice, soybean, and wheat across 91 countries. The dataset is a culmination of 8703 simulations from 202 studies conducted between 1984 and 2020, meticulously compiled through a systematic review of scientific databases, journal articles, and institutional website data, including Scopus, Web of Science, and others. Additionally, geographical coordinates along with current and projected temperature and precipitation levels are integrated, providing a robust framework for quantitative assessments of climate impact on crop production.
+
+This dataset, prepared for the IPCC Working Group II assessment, was initially formed by combining the meta-analysis dataset used by [@citeAggarwal2019], which covered studies from the first five IPCC assessment cycles, and extended with new literature searches for the sixth IPCC assessment cycle (2014–2020), thereby capturing the most relevant variables to evaluate the climate change impacts on crop yields. Efforts were made to ensure data quality and reliability through extensive cross-checks with original sources, recalculations of yields, and adjustments based on new climate scenario data. The resultant dataset stands as an open resource for subsequent analyses, driving forward the data-driven machine learning applications in the agricultural sector.
+
+The dataset underwent rigorous validation processes, including cross-checks with original sources, recalculations of some projected yields, and adjustments based on new climate scenario data. This ensured the accuracy and reliability of the dataset for further analyses. The data was processed and cleaned using R[@citeR], a powerful statistical programming language. For key operations, please refer to the [@sec-appendix]. 
+
+##  Variables
+To determine the impact of various climate change factors on rice production in Asia, we compiled a summary table that systematically details each variable, explaining their relevance and effects on regional rice yields. 
+
+```{r}
+#| label: tbl-agriculture-info
+#| tbl-cap: First Ten Rows of Agriculture Data
+#| echo: false
+#| warning: false
+#| message: false
+
+# Specify the file path and read the data
+agriculture_data <- read_parquet(here::here("data/analysis_data/agriculture.parquet"))
+
+# Select specific columns and slice the first 10 rows
+agriculture_data |>
+  select(country, local_delta_t, annual_precipitation_change_each_study_mm, co2_ppm, climate_impacts_per_decade_percent) |> 
+  slice(1:10) |>
+  kable(
+    col.names = c("Country", "Temperature Change", "Precipitation Change", "CO2 Concentrations", "Climate Impacts"), 
+    booktabs = TRUE
+  )
+```
+
+@tbl-agriculture-info, encapsulate each variable, articulating both its direct correlation with rice yields and the broader implications for the region’s agricultural output. For the geographical specificity, "Country" delineates the area under study, recognizing the diversity within Asia's vast agricultural landscapes and enabling an assessment that is both nuanced and regionally contextualized. "Temperature Change" denotes the local temperature change, a crucial variable considering rice’s sensitivity to thermal conditions. This metric aids in understanding the stress imposed by local temperature fluctuations on crop development and yield. "Precipitation Change" measures the deviations in annual precipitation from a given baseline, serving as a critical indicator of water resource availability, which is paramount to rice cultivation—a crop significantly dependent on consistent water supply. "Climate Impact" encapsulates the percentage change in rice yields attributed to climate over ten-year increments, providing a measure of the long-term trend in yield variability associated with climatic evolution. "CO2 Concentrations" indicates the levels of atmospheric carbon dioxide, a variable of dual significance: its role in directly influencing plant photosynthetic activity and its broader part in the spectrum of climate change parameters impacting agricultural productivity."Climate Impacts" gauges the decadal percentage change in rice yields as a result of climate influences, indicating the pace at which climate variables are reshaping agricultural productivity over time.
+
+# Model {#sec-model}
+
+##  Model Set-up
+
+##  Model Justification
+
+
+# Results  {#sec-result}
+
+
+# Discussion  {#sec-discussion}
+
+
 \newpage
 
 
