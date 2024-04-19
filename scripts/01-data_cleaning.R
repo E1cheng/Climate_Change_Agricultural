@@ -1,8 +1,8 @@
 #### Preamble ####
 # Purpose: Cleans the raw agriculture data
 # Author: Cheng Yang
-# Date: 01 April 2024
-# Contact: 
+# Date: 28 March 2024
+# Contact: yvonneyang.cheng@mail.utoronto.ca
 # License: MIT
 
 #### WORKPLACE SETUP ####
